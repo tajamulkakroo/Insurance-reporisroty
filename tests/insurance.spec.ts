@@ -39,9 +39,9 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'Enroll Now' }).click();
   await page.waitForLoadState('networkidle');
   await page.goto('https://individualinsurance.healthpartners.com/hp/application/PriorToApplying.action#1', { waitUntil: 'load', timeout: 30000 });
- // await page.goto('https://individualinsurance.healthpartners.com/hp/application/PriorToApplying.action#2');
- // await page.goto('https://individualinsurance.healthpartners.com/hp/application/PriorToApplying.action#3');
- // await page.goto('https://individualinsurance.healthpartners.com/hp/application/PriorToApplying.action#4');
+  await page.goto('https://individualinsurance.healthpartners.com/hp/application/PriorToApplying.action#2');
+  await page.goto('https://individualinsurance.healthpartners.com/hp/application/PriorToApplying.action#3');
+  await page.goto('https://individualinsurance.healthpartners.com/hp/application/PriorToApplying.action#4');
   await page.getByText('*First name MI *Last name').click();
   await page.locator('#priorToApplyingForm_priorToApplyingInfo_userProfile_user_emailAddress').click();
   await page.locator('#priorToApplyingForm_priorToApplyingInfo_userProfile_user_emailAddress').fill('abc@gmail.com');
