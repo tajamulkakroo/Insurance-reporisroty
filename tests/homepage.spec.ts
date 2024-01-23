@@ -1,6 +1,5 @@
 import { test, expect, Page, Locator } from '@playwright/test';
-import { healthPartners as fakehealthPartners } from '../Fixtures/InsuranceFixture';
-test.setTimeout(120000);
+import { healthPartners as fakehealthPartners } from '../fixtures/InsuranceFixture'
 
 class HealthPartnersPage {
   private readonly page: Page;

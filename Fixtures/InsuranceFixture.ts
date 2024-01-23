@@ -1,3 +1,4 @@
+const faker = require('faker');
 import { faker } from '@faker-js/faker';
 export const healthPartners = () => ({
 
@@ -8,6 +9,4 @@ export const healthPartners = () => ({
     dependentFirstNameLocator:faker.random.word({count:7}),
     dependentLastNameLocator:faker.random.word({count:6}),
     dependentBirthDateLocator:faker.random.birthDate(),
-    emailLocator:faker.randon.emailAddress(),
-
-});
+    emailLocator:faker.randon.emailAddress()});
