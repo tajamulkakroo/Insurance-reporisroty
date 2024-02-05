@@ -11,7 +11,7 @@ test('Health Partners Test', async ({ page }) => {
   const healthPartnersPage = new HealthPartnersPage(page);
     await healthPartnersPage.navigateToWelcomePage();
     await healthPartnersPage.clickGetStartedLink();
-    await healthPartnersPage.clickSkipAndShopPlansLink();
+    await healthPartnersPage.SeeIfYouQualify();
     await healthPartnersPage.fillZipCode('55413');
     await healthPartnersPage.fillFirstName(fakeValue.firstNameLocator);
     await healthPartnersPage.fillLastName(fakeValue.lastNameLocator);
