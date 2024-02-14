@@ -51,7 +51,6 @@ async function performTestForRow(row: any, browser: BrowserContext) {
   console.log("Actual groupNumberValue:", groupNumberValue);
   expect(groupNumberValue).toBe(row["HealthPartners Group Number"]);
 
-  // Fill in Controlled groups section
   // Fill in the Controlled groups section
 if (row["Question1"] === "Yes") {
     const question_1 = await page.waitForSelector("#guideContainer-rootPanel-panel_284316770-guideradiobutton__-1_widget");
@@ -83,7 +82,7 @@ if (row["Question3"].trim() !== "") {
 // Fill in the Employee verification section
 // January
 await page.waitForSelector("#guideContainer-rootPanel-panel_447431182-guidenumericstepper___widget").then(async (element) => {
-    await element.fill(row["January"]);
+    await element.fill(row["Janurary"]);
 });
 
 // February
