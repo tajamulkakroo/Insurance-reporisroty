@@ -164,11 +164,20 @@ if (!row["ALERT$$EmployeeTitle"]) {
     expect(errorObj).not.toBeNull();
   }
 
-  // Handle file download and renaming
-  await page.waitForTimeout(20000); // Wait for download to complete
-  const list_of_files = await page.evaluate(() => {
-    return Array.from(document.querySelectorAll("a")).map(e => e.getAttribute("href"));
-  });
+ // Wait for the page to fully load
+await page.waitForLoadState('networkidle');
+
+// Handle file download and renaming
+const list_of_files = await page.evaluate(() => {
+    // Check if anchor elements exist
+    const anchors = document.querySelectorAll("a");
+    if (anchors.length === 0) {
+        return []; // Return an empty array if no anchor elements found
+    }
+    // Otherwise, map anchor elements to their href attributes
+    return Array.from(anchors).map(e => e.getAttribute("href"));
+});
+
   const latestFile = list_of_files.reduce((prev, curr) => (new Date(prev.ctime) > new Date(curr.ctime)) ? prev : curr);
   console.log("Latest file:", latestFile);
   // Perform renaming (Implement renaming logic here)
