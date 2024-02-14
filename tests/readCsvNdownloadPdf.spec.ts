@@ -49,7 +49,7 @@ async function performTestForRow(row: any, browser: BrowserContext) {
   const groupNumberElement = await page.waitForSelector("#guideContainer-rootPanel-panel-guidetextbox_1208233___widget");
   const groupNumberValue = await groupNumberElement.getAttribute("value");
   console.log("Actual groupNumberValue:", groupNumberValue);
-  expect(groupNumberValue).toBe(row["Group Number"]);
+  expect(groupNumberValue).toBe(row["HealthPartners Group Number"]);
 
   // Fill in Controlled groups section
   // Similar validation and filling in other sections
