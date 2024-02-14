@@ -26,6 +26,7 @@ test("Download PDF Test", async ({ page }) => {
         // Validating Employer information section
         const name = await page.waitForSelector("#guideContainer-rootPanel-panel-guidetextbox___widget");
         const nameValue = await name.getAttribute("value");
+        console.log("Actual nameValue:", nameValue);
         expect(nameValue).toBe(row.name);
         
         const renewalDate = await page.$eval("#guideContainer-rootPanel-panel-guidetextbox_5670568___widget", el => el.getAttribute("value"));
