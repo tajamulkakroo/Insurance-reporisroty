@@ -24,16 +24,20 @@ test("Download PDF Test", async ({ page }) => {
         await page.waitForLoadState('networkidle');
 
         // Validating Employer information section
-        const name = await page.waitForSelector("#guideContainer-rootPanel-panel-guidetextbox___widget");
-        const nameValue = await name.getAttribute("value");
+        const nameElement = await page.waitForSelector("#guideContainer-rootPanel-panel-guidetextbox___widget");
+        const nameValue = await nameElement.getAttribute("value");
         console.log("Actual nameValue:", nameValue);
         expect(nameValue).toBe(row.name);
-        
-        const renewalDate = await page.$eval("#guideContainer-rootPanel-panel-guidetextbox_5670568___widget", el => el.getAttribute("value"));
-        expect(renewalDate).toBe(row.renewal_date);
 
-        const groupNumber = await page.$eval("#guideContainer-rootPanel-panel-guidetextbox_1208233___widget", el => el.getAttribute("value"));
-        expect(groupNumber).toBe(row.health_partners_group_number);
+        const renewalDateElement = await page.waitForSelector("#guideContainer-rootPanel-panel-guidetextbox_5670568___widget");
+        const renewalDateValue = await renewalDateElement.getAttribute("value");
+        console.log("Actual renewalDateValue:", renewalDateValue);
+        expect(renewalDateValue).toBe(row.renewal_date);
+
+        const groupNumberElement = await page.waitForSelector("#guideContainer-rootPanel-panel-guidetextbox_1208233___widget");
+        const groupNumberValue = await groupNumberElement.getAttribute("value");
+        console.log("Actual groupNumberValue:", groupNumberValue);
+        expect(groupNumberValue).toBe(row.health_partners_group_number);
 
         // Fill in Controlled groups section
         // Similar validation and filling in other sections
@@ -51,11 +55,12 @@ test("Download PDF Test", async ({ page }) => {
         // Handle file download and renaming
         await page.waitForTimeout(20000); // Wait for download to complete
         const list_of_files = await page.evaluate(() => {
-            return Array.from(document.querySelectorAll("./downloads")).map(e => e.textContent);
+            return Array.from(document.querySelectorAll("a")).map(e => e.getAttribute("href"));
         });
         const latestFile = list_of_files.reduce((prev, curr) => (new Date(prev.ctime) > new Date(curr.ctime)) ? prev : curr);
         console.log("Latest file:", latestFile);
-        // Perform renaming
+        // Perform renaming (Implement renaming logic here)
+
     }
 
     console.log("Done");
