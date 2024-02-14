@@ -21,6 +21,7 @@ test("Download PDF Test", async ({ page }) => {
 
         // Navigate to the web page
         await page.goto(row.url);
+        await page.waitForLoadState('networkidle');
 
         // Validating Employer information section
         const name = await page.waitForSelector("#guideContainer-rootPanel-panel-guidetextbox___widget");
