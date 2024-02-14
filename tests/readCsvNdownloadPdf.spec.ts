@@ -48,7 +48,7 @@ test("Download PDF Test", async ({ page }) => {
         // Handle file download and renaming
         await page.waitForTimeout(20000); // Wait for download to complete
         const list_of_files = await page.evaluate(() => {
-            return Array.from(document.querySelectorAll("./Downloads")).map(e => e.textContent);
+            return Array.from(document.querySelectorAll("./downloads")).map(e => e.textContent);
         });
         const latestFile = list_of_files.reduce((prev, curr) => (new Date(prev.ctime) > new Date(curr.ctime)) ? prev : curr);
         console.log("Latest file:", latestFile);
