@@ -23,9 +23,10 @@ test("Download PDF Test", async ({ page }) => {
         await page.goto(row.url);
 
         // Validating Employer information section
-        const name = await page.$eval("#guideContainer-rootPanel-panel-guidetextbox___widget", el => el.getAttribute("value"));
-        expect(name).toBe(row.name);
-
+        const name = await page.waitForSelector("#guideContainer-rootPanel-panel-guidetextbox___widget");
+        const nameValue = await name.getAttribute("value");
+        expect(nameValue).toBe(row.name);
+        
         const renewalDate = await page.$eval("#guideContainer-rootPanel-panel-guidetextbox_5670568___widget", el => el.getAttribute("value"));
         expect(renewalDate).toBe(row.renewal_date);
 
