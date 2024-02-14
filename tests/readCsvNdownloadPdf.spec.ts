@@ -39,17 +39,17 @@ async function performTestForRow(row: any, browser: BrowserContext) {
   const nameElement = await page.waitForSelector("#guideContainer-rootPanel-panel-guidetextbox___widget");
   const nameValue = await nameElement.getAttribute("value");
   console.log("Actual nameValue:", nameValue);
-  expect(nameValue).toBe(row[1]);
+  expect(nameValue).toBe(row["Employer Name"]);
 
   const renewalDateElement = await page.waitForSelector("#guideContainer-rootPanel-panel-guidetextbox_5670568___widget");
   const renewalDateValue = await renewalDateElement.getAttribute("value");
   console.log("Actual renewalDateValue:", renewalDateValue);
-  expect(renewalDateValue).toBe(row[2]);
+  expect(renewalDateValue).toBe(row["Renewal Date"]);
 
   const groupNumberElement = await page.waitForSelector("#guideContainer-rootPanel-panel-guidetextbox_1208233___widget");
   const groupNumberValue = await groupNumberElement.getAttribute("value");
   console.log("Actual groupNumberValue:", groupNumberValue);
-  expect(groupNumberValue).toBe(row[3]);
+  expect(groupNumberValue).toBe(row["Group Number"]);
 
   // Fill in Controlled groups section
   // Similar validation and filling in other sections
