@@ -10,6 +10,7 @@ test.setTimeout(120000);
 test('Health Partners Test', async ({ page }) => {
   const healthPartnersPage = new HealthPartnersPage(page);
     await healthPartnersPage.navigateToWelcomePage();
+    await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome");
     await healthPartnersPage.clickGetStartedLink();
     await healthPartnersPage.SeeIfYouQualify();
     await healthPartnersPage.fillZipCode('55413');
@@ -18,7 +19,7 @@ test('Health Partners Test', async ({ page }) => {
     await healthPartnersPage.fillBirthDate(fakeValue.birthDateLocator);
     await healthPartnersPage.selectGender(fakeValue.genderLocator);
     await healthPartnersPage.selectSmokerOption(fakeValue.smokerLocator);
-    
+       
 
 
 
