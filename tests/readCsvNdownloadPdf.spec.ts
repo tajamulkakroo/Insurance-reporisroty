@@ -178,8 +178,18 @@ const list_of_files = await page.evaluate(() => {
     return Array.from(anchors).map(e => e.getAttribute("href"));
 });
 
-  const latestFile = list_of_files.reduce((prev, curr) => (new Date(prev.ctime) > new Date(curr.ctime)) ? prev : curr);
-  console.log("Latest file:", latestFile);
+  // Filter out null values from list_of_files
+const validFiles = list_of_files.filter(file => file !== null);
+
+if (validFiles.length > 0) {
+    // Perform reduction only if there are valid files
+    const latestFile = validFiles.reduce((prev, curr) => (new Date(prev.ctime) > new Date(curr.ctime)) ? prev : curr);
+    console.log("Latest file:", latestFile);
+    // Perform renaming logic here
+} else {
+    console.log("No files found on the page.");
+}
+
   // Perform renaming (Implement renaming logic here)
 
   // Close the page
