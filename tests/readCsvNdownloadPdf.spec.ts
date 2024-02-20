@@ -24,6 +24,9 @@ test("Download PDF Test", async ({ browser }) => {
   console.log("Done");
 });
 
+await page.screenshot({ path: 'snapshot.png' }); // Take a screenshot of the page
+
+
 // Define a separate function to perform the test for each row
 async function performTestForRow(row: any, browser: BrowserContext) {
   console.log("Test ", row);
