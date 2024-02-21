@@ -19,6 +19,12 @@ test('Health Partners Test', async ({ page }) => {
     await healthPartnersPage.fillBirthDate(fakeValue.birthDateLocator);
     await healthPartnersPage.selectGender(fakeValue.genderLocator);
     await healthPartnersPage.selectSmokerOption(fakeValue.smokerLocator);
+    await healthPartnersPage.clickAddDependentLink();
+    await healthPartnersPage.fillDependentFirstName(fakeValue.dependentFirstNameLocator);
+    await healthPartnersPage.fillDependentLastName(fakeValue.dependentLastNameLocator);
+    await healthPartnersPage.fillDependentBirthDate(fakeValue.dependentBirthDateLocator);
+    await healthPartnersPage.selectDependentRelationship
+
        
 
 
