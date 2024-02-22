@@ -8,12 +8,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.41.1",
-    "@types/node": "^20.10.6"
+    "@types/node": "^20.10.6",
+    "faker": "^5.5.3"
   },
   "dependencies": {
     "date-fns": "^3.3.1",
-    "faker": "^5.5.3",
     "fast-csv": "^5.0.0",
     "playwright": "^1.41.1"
   }
