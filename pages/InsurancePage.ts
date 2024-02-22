@@ -7,12 +7,19 @@ export class HealthPartnersPage {
   readonly lastNameLocator: Locator;
   readonly birthDateLocator: Locator;
   readonly genderLocator: Locator;
+  readonly childGenderLocator: Locator;
   readonly smokerLocator: Locator;
   readonly dependentFirstNameLocator: Locator;
   readonly dependentLastNameLocator: Locator;
   readonly dependentBirthDateLocator: Locator;
   readonly relationshipLocator: Locator;
   readonly emailLocator: Locator;
+  readonly childSmokerLocator: Locator;
+  readonly userIdLocator: Locator;
+  readonly passwordLocator: Locator;
+  readonly confirmPasswordLocator: Locator;
+  readonly securityQuestionLocator: Locator;
+  readonly  answerLocator: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -21,12 +28,21 @@ export class HealthPartnersPage {
     this.lastNameLocator = this.page.locator('#lastName23');
     this.birthDateLocator = this.page.locator('#birthDate24');
     this.genderLocator = this.page.locator('#gender26');
+    this.childGenderLocator = this.page.locator('#gender42');
     this.smokerLocator = this.page.locator('#isSmoker27');
     this.dependentFirstNameLocator = this.page.locator('#firstName38');
     this.dependentLastNameLocator = this.page.locator('#lastName39');
     this.dependentBirthDateLocator = this.page.locator('#birthDate40');
     this.relationshipLocator = this.page.locator('#memberRelationship41');
+    this.childSmokerLocator = this.page.locator('#isSmoker43')
     this.emailLocator = this.page.locator('#priorToApplyingForm_priorToApplyingInfo_userProfile_user_emailAddress');
+    this.userIdLocator = this.page.locator('#priorToApplyingForm_priorToApplyingInfo_registrationInfo_userId');
+    this.passwordLocator  = this.page.locator('#priorToApplyingForm_priorToApplyingInfo_registrationInfo_password');
+    this.confirmPasswordLocator = this.page.locator('#priorToApplyingForm_priorToApplyingInfo_registrationInfo_confirmPassword');
+    this.securityQuestionLocator = this.page.locator('#secretQuestion');
+    this.answerLocator = this.page.locator('#secretAnswer');
+
+
   }
 
   async navigateToWelcomePage() {
@@ -47,7 +63,6 @@ export class HealthPartnersPage {
   await this.page.getByRole('cell', { name: '4' }).nth(1).click();
   await this.page.waitForLoadState('networkidle');
   await this.page.getByRole('link', { name: 'Save & Continue' }).click();
-  await this.page.waitForLoadState('networkidle');
   }
 
   async fillZipCode(zipCode: string) {
@@ -104,8 +119,12 @@ export class HealthPartnersPage {
   }
 
   async selectDependentGender(gender: string) {
-    const genderLocator: Locator = this.page.locator('#gender42');
-    await genderLocator.selectOption(gender);
+    await this.childGenderLocator.selectOption(gender);
+  }
+
+  async selectSmokerOptionForDepandant(option: string) {
+    await this.childSmokerLocator.click();
+    await this.childSmokerLocator.selectOption(option);
   }
 
   async clickContinueLink() {
@@ -137,14 +156,19 @@ export class HealthPartnersPage {
     await this.page.getByRole('link', { name: 'Enroll Now' }).click();
     await this.page.waitForLoadState('networkidle');
   }
-  // Add more methods for other interactions as needed
 
-  // Example method to fill in the email address field
   async fillEmailAddress(emailAddress: string) {
-    const emailLocator: Locator = this.page.locator('#priorToApplyingForm_priorToApplyingInfo_userProfile_user_emailAddress');
-    await emailLocator.click();
-    await emailLocator.fill(emailAddress);
+    await this.emailLocator.click();
+    await this.emailLocator.fill(emailAddress);
   }
 
-  // Add more methods for other interactions as needed
+  async userIDAndPassword(userID: string, password: string, confirmPassoword: string){
+    await this.userIdLocator.click();
+    await this.userIdLocator.fill(userID);
+    await this.passwordLocator.click();
+    await this.passwordLocator.fill(password);
+    await this.confirmPasswordLocator.click();
+    await this.confirmPasswordLocator.fill(confirmPassoword);
 }
+}
+

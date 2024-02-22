@@ -16,14 +16,28 @@ test('Health Partners Test', async ({ page }) => {
     await healthPartnersPage.fillZipCode('55413');
     await healthPartnersPage.fillFirstName(fakeValue.firstNameLocator);
     await healthPartnersPage.fillLastName(fakeValue.lastNameLocator);
-    await healthPartnersPage.fillBirthDate(fakeValue.birthDateLocator);
+    await healthPartnersPage.fillBirthDate('02/16/1987');
     await healthPartnersPage.selectGender(fakeValue.genderLocator);
     await healthPartnersPage.selectSmokerOption(fakeValue.smokerLocator);
     await healthPartnersPage.clickAddDependentLink();
     await healthPartnersPage.fillDependentFirstName(fakeValue.dependentFirstNameLocator);
     await healthPartnersPage.fillDependentLastName(fakeValue.dependentLastNameLocator);
-    await healthPartnersPage.fillDependentBirthDate(fakeValue.dependentBirthDateLocator);
-    await healthPartnersPage.selectDependentRelationship
+    await healthPartnersPage.fillDependentBirthDate('12/18/2001');
+    await healthPartnersPage.selectDependentRelationship(fakeValue.relationshipLocator);
+    await healthPartnersPage.selectDependentGender(fakeValue.childGenderLocator);
+    await healthPartnersPage.selectSmokerOptionForDepandant(fakeValue.childSmokerLocator);
+    await healthPartnersPage.clickContinueLink();
+    await healthPartnersPage.selectBrowseAllPlans();
+    await healthPartnersPage.addToCart();
+    await healthPartnersPage.viewCartAndEnroll();
+    await healthPartnersPage.enrollNow();
+    await healthPartnersPage.fillEmailAddress(fakeValue.emailLocator);
+    await healthPartnersPage.userIDAndPassword(fakeValue.userIdLocator, fakeValue.passwordLocator, fakeValue.confirmPasswordLocator);
+
+
+
+
+
 
        
 
