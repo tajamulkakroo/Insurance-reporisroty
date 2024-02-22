@@ -163,13 +163,13 @@ export class HealthPartnersPage {
     await this.emailLocator.fill(emailAddress);
   }
 
-  async userIDAndPassword(userID: string, password: string, confirmPassoword: string){
+  async userIDAndPassword(id: string, password: string){
     await this.userIdLocator.click();
-    await this.userIdLocator.fill(userID);
+    await this.userIdLocator.fill(id);
     await this.passwordLocator.click();
     await this.passwordLocator.fill(password);
     await this.confirmPasswordLocator.click();
-    await this.confirmPasswordLocator.fill(confirmPassoword);
+    await this.confirmPasswordLocator.fill(password);
 }
 async securityQuestionAndBroker(answer: string) {
   await this.securityQuestionLocator.selectOption('What was your childhood nickname?');
@@ -177,7 +177,10 @@ async securityQuestionAndBroker(answer: string) {
   await this.answerLocator.fill(answer);
   await this.page.getByLabel('No').check();
   await this.page.getByRole('link', { name: 'Continue ' }).click();
+}
 
+async startEnrolment(){
+  await this.page.getByRole('link',{ name: 'Start enrollment'}).click();
 
 }
 
