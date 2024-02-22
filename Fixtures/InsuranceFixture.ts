@@ -7,7 +7,7 @@ export const HealthPartners = () => ({
     smokerLocator: faker.random.arrayElement(['Yes', 'No']),
     dependentFirstNameLocator: faker.random.word({ count: 7 }),
     dependentLastNameLocator: faker.random.word({ count: 6 }),
-    relationshipLocator: faker.random.arrayElement(['Spouse', 'Child']),
+    relationshipLocator: faker.random.arrayElement(['Child']),
     childGenderLocator: faker.random.arrayElement(['Male', 'Female']),
     childSmokerLocator: faker.random.arrayElement(['Yes', 'No']),
     emailLocator: faker.internet.email(),
