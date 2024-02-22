@@ -57,12 +57,13 @@ export class HealthPartnersPage {
 
   async SeeIfYouQualify() {
   await this.page.getByRole('link', { name: 'See if you qualify' }).click();
+  await this.page.waitForLoadState('networkidle');
   await this.page.getByText('Birth of child, adoption of').click();
   await this.page.getByRole('checkbox').check();
   await this.page.getByLabel('Enter the date of your event:').click();
   await this.page.getByRole('cell', { name: '4' }).nth(1).click();
-  await this.page.waitForLoadState('networkidle');
   await this.page.getByRole('link', { name: 'Save & Continue' }).click();
+  await this.page.waitForLoadState('networkidle');
   }
 
   async fillZipCode(zipCode: string) {
@@ -170,5 +171,15 @@ export class HealthPartnersPage {
     await this.confirmPasswordLocator.click();
     await this.confirmPasswordLocator.fill(confirmPassoword);
 }
+async securityQuestionAndBroker(answer: string) {
+  await this.securityQuestionLocator.selectOption('What was your childhood nickname?');
+  await this.answerLocator.click();
+  await this.answerLocator.fill(answer);
+  await this.page.getByLabel('No').check();
+  await this.page.getByRole('link', { name: 'Continue ' }).click();
+
+
+}
+
 }
 

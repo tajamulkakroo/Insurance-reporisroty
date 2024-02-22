@@ -14,5 +14,7 @@ export const HealthPartners = () => ({
     userIdLocator: faker.datatype.number({count: 8}).toString(),
     passwordLocator: faker.internet.password(10, false, /\w/, '!Aa0'),
     confirmPasswordLocator: faker.internet.password(10, false, /\w/, '!Aa0'),
+    answerLocator: faker.random.word({ count: 4 }), // TODO: Implement a real question/answer mechanism here
+
 });
 
