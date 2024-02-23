@@ -20,7 +20,11 @@ export class HealthPartnersPage {
   readonly passwordLocator: Locator;
   readonly confirmPasswordLocator: Locator;
   readonly securityQuestionLocator: Locator;
-  readonly  answerLocator: Locator;
+  readonly answerLocator: Locator;
+  readonly addressLocator: Locator;
+  readonly cityLocator: Locator;
+  readonly phoneLocator: Locator;
+
 
   constructor(page: Page) {
     this.page = page;
@@ -42,6 +46,10 @@ export class HealthPartnersPage {
     this.confirmPasswordLocator = this.page.locator('#priorToApplyingForm_priorToApplyingInfo_registrationInfo_confirmPassword');
     this.securityQuestionLocator = this.page.locator('#secretQuestion');
     this.answerLocator = this.page.locator('#secretAnswer');
+    this.addressLocator = this.page.locator('input[name="Application\\.Applicant\\.Address_1"]');
+    this.cityLocator = this.page.locator('input[name="Application\\.Applicant\\.City"]');
+    this.phoneLocator = this.page.locator('input[name="Application\\.Applicant\\.Home_Phone"]');
+
 
 
   }
@@ -182,27 +190,38 @@ async securityQuestionAndBroker(answer: string) {
   await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
-async startEnrolment(){
+async startEnrolment(address: string, city: string, phone: string){
   await this.page.getByRole('link',{ name: 'Start enrollment'}).click();
   await this.page.waitForLoadState('networkidle');
-  await this.page.locator('input[name="Application\\.Applicant\\.Address_1"]').click();
-  await this.page.locator('input[name="Application\\.Applicant\\.Address_1"]').fill('House number 1566');
-  await this.page.locator('input[name="Application\\.Applicant\\.City"]').click();
-  await this.page.locator('input[name="Application\\.Applicant\\.City"]').fill('Chicago');
-  await this.page.locator('input[name="Application\\.Applicant\\.Home_Phone"]').click();
-  await this.page.locator('input[name="Application\\.Applicant\\.Home_Phone"]').fill('123456789')
+  await this.addressLocator.click();
+  await this.addressLocator.fill(address);
+  await this.cityLocator.click();
+  await this.cityLocator.fill(city);
+  await this.phoneLocator.click();
+  await this.phoneLocator.fill(phone);
   await this.page.getByLabel('Check this box if applicant').check();
   await this.page.getByRole('link', { name: 'Continue ' }).click();
   await this.page.waitForLoadState('networkidle');
-  //await this.page.goto('https://individualinsurance.healthpartners.com/hp/applicationservice/Application.action?appResponseCode=b3b3e6b1-6bc5-4037-a1b5-01069bce9a47#PAGE36C2D0AC7G95A4E40239');
-  //await this.page.locator('div').filter({ hasText: /^\*Same address as primary applicant\? YesNo$/ }).getByLabel('Yes').check();
-  //await this.page.getByLabel('Check this box if applicant').check();
-  //await this.page.getByRole('link', { name: 'Continue ' }).click();
-  //await this.page.getByLabel('No').first().check();
-  //await this.page.getByLabel('No').nth(2).check();
-  //await this.page.getByRole('link', { name: 'Continue ' }).click();
+}
+
+async familyMembers(){
+
+   //await this.page.goto('https://individualinsurance.healthpartners.com/hp/applicationservice/Application.action?appResponseCode=b3b3e6b1-6bc5-4037-a1b5-01069bce9a47#PAGE36C2D0AC7G95A4E40239');
+   await this.page.locator('div').filter({ hasText: /^\*Same address as primary applicant\? YesNo$/ }).getByLabel('Yes').check();
+   await this.page.getByLabel('Check this box if applicant').check();
+   await this.page.getByRole('link', { name: 'Continue ' }).click();
+  
 
 }
 
+async planInformation(){
+
+  await this.page.getByLabel('No').first().check();
+  await this.page.getByLabel('No').nth(2).check();
+  await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
+ 
+}
+
+
 

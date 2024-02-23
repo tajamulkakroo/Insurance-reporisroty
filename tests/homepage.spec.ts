@@ -34,7 +34,10 @@ test('Health Partners Test', async ({ page }) => {
     await healthPartnersPage.fillEmailAddress(fakeValue.emailLocator);
     await healthPartnersPage.userIDAndPassword(fakeValue.userIdLocator, fakeValue.passwordLocator);
     await healthPartnersPage.securityQuestionAndBroker(fakeValue.answerLocator);
-    await healthPartnersPage.startEnrolment();
+    await healthPartnersPage.startEnrolment(fakeValue.addressLocator, fakeValue.cityLocator, fakeValue.phoneLocator);
+    await healthPartnersPage.familyMembers();
+    await healthPartnersPage.planInformation();
+
 
 
 
