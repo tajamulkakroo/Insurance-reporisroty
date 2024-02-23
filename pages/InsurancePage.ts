@@ -201,13 +201,12 @@ async startEnrolment(address: string, city: string, phone: string){
   await this.phoneLocator.fill(phone);
   await this.page.getByLabel('Check this box if applicant').check();
   await this.page.getByRole('link', { name: 'Continue ' }).click();
-  await this.page.waitForLoadState('networkidle');
 }
 
 async familyMembers(){
-
-   //await this.page.goto('https://individualinsurance.healthpartners.com/hp/applicationservice/Application.action?appResponseCode=b3b3e6b1-6bc5-4037-a1b5-01069bce9a47#PAGE36C2D0AC7G95A4E40239');
+   await this.page.locator('input[name="Application\\.Dependent\\[0\\]\\.Middle_Initial"]').click();
    await this.page.locator('div').filter({ hasText: /^\*Same address as primary applicant\? YesNo$/ }).getByLabel('Yes').check();
+   await this.page.waitForLoadState('networkidle');
    await this.page.getByLabel('Check this box if applicant').check();
    await this.page.getByRole('link', { name: 'Continue ' }).click();
   
@@ -219,6 +218,11 @@ async planInformation(){
   await this.page.getByLabel('No').first().check();
   await this.page.getByLabel('No').nth(2).check();
   await this.page.getByRole('link', { name: 'Continue ' }).click();
+}
+
+async uploadFile() {
+
+  await this.page.getByLabel('fileUpload').setInputFiles('./dummy.pdf');
 }
  
 }
