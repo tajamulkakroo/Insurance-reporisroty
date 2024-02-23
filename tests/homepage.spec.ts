@@ -40,23 +40,6 @@ test('Health Partners Test', async ({ page }) => {
     await healthPartnersPage.uploadFile();
     await healthPartnersPage.paymentOptions(fakeValue.firstNameLocator, fakeValue.lastNameLocator);
     await healthPartnersPage.verifySubmission();
+    await healthPartnersPage.submitForm();
 
-
-
-
-
-
-
-
-       
-
-
-
-
-  // Continue with the rest of the interactions...
-
-  // Example usage of a method from a different section
-  await healthPartnersPage.fillEmailAddress('abc@gmail.com');
-  
-  // Continue with the rest of the test... */
 });

@@ -247,15 +247,16 @@ async paymentOptions(firstName: string, lastName: string) {
   await this.page.getByPlaceholder('mm/yyyy').fill('10/2030');
   await this.page.locator('div').filter({ hasText: /^Yes$/ }).click();
   await this.page.getByRole('link', { name: 'Continue ' }).click();
-  await this.page.waitForLoadState('domcontentloaded');
 }
 async verifySubmission() {
+  
   await this.page.getByRole('link', { name: 'Continue ' }).click();
+}
+
+async  submitForm(){
+  await this.page.waitForLoadState('domcontentloaded');
   await this.page.getByRole('checkbox', { name: 'I agree with the terms and' }).check();
   await this.page.getByRole('checkbox', { name: 'I understand that I, or those' }).check();
 }
- 
+
 }
-
-
-
