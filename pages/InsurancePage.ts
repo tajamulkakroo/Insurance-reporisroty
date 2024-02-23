@@ -26,6 +26,10 @@ export class HealthPartnersPage {
   readonly phoneLocator: Locator;
   readonly creditCardFirstNameLocator: Locator;
   readonly creditCardLastNameLocator: Locator;
+  readonly applicantFirstNameLocator: Locator;
+  readonly applicantLastNameLocator: Locator;
+  readonly confirmFirstNameLocator: Locator;
+  readonly confirmLastNameLocator: Locator;
 
 
   constructor(page: Page) {
@@ -53,11 +57,11 @@ export class HealthPartnersPage {
     this.phoneLocator = this.page.locator('input[name="Application\\.Applicant\\.Home_Phone"]');
     this.creditCardFirstNameLocator = this.page.locator('input[name="Application\\.Initial_Credit_Card\\.Cardholder_First_Name"]');
     this.creditCardLastNameLocator = this.page.locator('input[name="Application\\.Initial_Credit_Card\\.Cardholder_Last_Name"]');
-
-
-
-
-  }
+    this.applicantFirstNameLocator = this.page.locator('input[name="Application.Signature.First_Name"]');
+    this.applicantLastNameLocator = this.page.locator('input[name="Application.Signature.Last_Name"]');
+    this.confirmFirstNameLocator = this.page.locator('input[name="Application.Signature.Confirm_First_Name"]');
+    this.confirmLastNameLocator = this.page.locator('input[name="Application.Signature.Confirm_Last_Name"]');
+    }
 
   async navigateToWelcomePage() {
     await this.page.goto('https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome');
@@ -253,10 +257,18 @@ async verifySubmission() {
   await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
-async  submitForm(){
-  await this.page.waitForLoadState('domcontentloaded');
-  await this.page.getByRole('checkbox', { name: 'I agree with the terms and' }).check();
-  await this.page.getByRole('checkbox', { name: 'I understand that I, or those' }).check();
+async  submitForm(firstName: string, lastName: string){
+  await this.page.locator('#CHECKBOX1FE4964A4AE79DA3DAF6').check;
+  await this.page.locator('#CHECKBOX81B9EA3022BEAD60G1A4').check;
+  /*await this.applicantFirstNameLocator.click();
+  await this.applicantFirstNameLocator.fill(firstName);
+  await this.applicantLastNameLocator.click();
+  await this.applicantLastNameLocator.fill(lastName);
+  await this.confirmFirstNameLocator.click();
+  await this.confirmFirstNameLocator.fill(firstName);
+  await this.confirmLastNameLocator.click();
+  await this.confirmLastNameLocator.fill(lastName); */   
+  //Please add inique IDs for these 4 elements
 }
 
 }

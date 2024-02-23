@@ -20,5 +20,8 @@ export const HealthPartners = () => ({
     phoneLocator: faker.phone.phoneNumber(),
     creditCardFirstNameLocator: faker.random.word({ count: 8 }),
     creditCardLastNameLocator:  faker.random.word({ count: 8 }),
-
+    applicantFirstNameLocator: faker.random.word({ Count: 8}),
+    applicantLastNameLocator: faker.random.word({ Count: 8}),
+    confirmFirstNameLocator: faker.random.word({ Count: 8}),
+    confirmLastNameLocator: faker.random.word({ Count: 8}),
 });

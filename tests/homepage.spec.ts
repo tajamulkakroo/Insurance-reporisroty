@@ -40,6 +40,6 @@ test('Health Partners Test', async ({ page }) => {
     await healthPartnersPage.uploadFile();
     await healthPartnersPage.paymentOptions(fakeValue.firstNameLocator, fakeValue.lastNameLocator);
     await healthPartnersPage.verifySubmission();
-    await healthPartnersPage.submitForm();
+    await healthPartnersPage.submitForm(fakeValue.firstNameLocator, fakeValue.lastNameLocator);
 
 });
