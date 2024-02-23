@@ -24,6 +24,8 @@ export class HealthPartnersPage {
   readonly addressLocator: Locator;
   readonly cityLocator: Locator;
   readonly phoneLocator: Locator;
+  readonly creditCardFirstNameLocator: Locator;
+  readonly creditCardLastNameLocator: Locator;
 
 
   constructor(page: Page) {
@@ -49,6 +51,9 @@ export class HealthPartnersPage {
     this.addressLocator = this.page.locator('input[name="Application\\.Applicant\\.Address_1"]');
     this.cityLocator = this.page.locator('input[name="Application\\.Applicant\\.City"]');
     this.phoneLocator = this.page.locator('input[name="Application\\.Applicant\\.Home_Phone"]');
+    this.creditCardFirstNameLocator = this.page.locator('input[name="Application\\.Initial_Credit_Card\\.Cardholder_First_Name"]');
+    this.creditCardLastNameLocator = this.page.locator('input[name="Application\\.Initial_Credit_Card\\.Cardholder_Last_Name"]');
+
 
 
 
@@ -226,11 +231,28 @@ async uploadFile() {
   await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
-async paymentOptions() {
+async paymentOptions(firstName: string, lastName: string) {
 
   await this.page.getByRole('radio', { name: 'NO', exact: true }).check();
   await this.page.getByLabel('No, I prefer to get and pay').check();
   await this.page.getByLabel('Credit/Debit Card').check(); 
+  await this.creditCardFirstNameLocator.click();
+  await this.creditCardFirstNameLocator.fill(firstName);
+  await this.creditCardLastNameLocator.click();
+  await this.creditCardLastNameLocator.fill(lastName);
+  await this.page.getByLabel('Visa').check();
+  await this.page.locator('input[name="Application\\.Initial_Credit_Card\\.CC_Number"]').click();
+  await this.page.locator('input[name="Application\\.Initial_Credit_Card\\.CC_Number"]').fill('4111111111111111');
+  await this.page.getByPlaceholder('mm/yyyy').click();
+  await this.page.getByPlaceholder('mm/yyyy').fill('10/2030');
+  await this.page.locator('div').filter({ hasText: /^Yes$/ }).click();
+  await this.page.getByRole('link', { name: 'Continue ' }).click();
+  await this.page.waitForLoadState('domcontentloaded');
+}
+async verifySubmission() {
+  await this.page.getByRole('link', { name: 'Continue ' }).click();
+  await this.page.getByRole('checkbox', { name: 'I agree with the terms and' }).check();
+  await this.page.getByRole('checkbox', { name: 'I understand that I, or those' }).check();
 }
  
 }

@@ -38,7 +38,8 @@ test('Health Partners Test', async ({ page }) => {
     await healthPartnersPage.familyMembers();
     await healthPartnersPage.planInformation();
     await healthPartnersPage.uploadFile();
-    await healthPartnersPage.paymentOptions();
+    await healthPartnersPage.paymentOptions(fakeValue.firstNameLocator, fakeValue.lastNameLocator);
+    await healthPartnersPage.verifySubmission();
 
 
 
