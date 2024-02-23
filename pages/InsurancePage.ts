@@ -65,17 +65,17 @@ export class HealthPartnersPage {
   }
 
   async SeeIfYouQualify() {
-  await this.page.getByRole('link', { name: 'See if you qualify' }).click();
-  await this.page.waitForLoadState('networkidle');
-  await this.page.getByText('Birth of child, adoption of').click();
-  await this.page.getByRole('checkbox').check();
-  await this.page.getByLabel('Enter the date of your event:').click();
-  await this.page.getByRole('cell', { name: '4' }).nth(1).click();
-  await this.page.getByRole('link', { name: 'Save & Continue' }).click();
-  await this.page.waitForLoadState('networkidle');
-  await this.page.getByRole('link', { name: 'Save & Continue' }).click();
+
+      await this.page.getByRole('link', { name: 'See if you qualify' }).click();
+      await this.page.waitForLoadState('domcontentloaded');
+      await this.page.getByText('Birth of child, adoption of').click();
+      await this.page.getByRole('checkbox').check();
+      await this.page.getByLabel('Enter the date of your event:').click();
+      await this.page.getByRole('cell', { name: '4' }).nth(1).click();
+      await this.page.getByRole('link', { name: 'Save & Continue' }).click();
+    
+    }
   
-  }
 
   async fillZipCode(zipCode: string) {
     await this.zipCodeLocator.click();
