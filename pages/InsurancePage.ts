@@ -63,6 +63,8 @@ export class HealthPartnersPage {
   await this.page.getByLabel('Enter the date of your event:').click();
   await this.page.getByRole('cell', { name: '4' }).nth(1).click();
   await this.page.getByRole('link', { name: 'Save & Continue' }).click();
+  await this.page.waitForLoadState('networkidle');
+  await this.page.getByRole('link', { name: 'Save & Continue' }).click();
   
   }
 
