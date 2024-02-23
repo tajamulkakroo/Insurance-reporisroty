@@ -222,7 +222,15 @@ async planInformation(){
 
 async uploadFile() {
 
-  await this.page.getByLabel('fileUpload').setInputFiles('./dummy.pdf');
+  await this.page.getByRole('textbox').setInputFiles('./dummy.pdf');
+  await this.page.getByRole('link', { name: 'Continue ' }).click();
+}
+
+async paymentOptions() {
+
+  await this.page.getByRole('radio', { name: 'NO', exact: true }).check();
+  await this.page.getByLabel('No, I prefer to get and pay').check();
+  await this.page.getByLabel('Credit/Debit Card').check(); 
 }
  
 }
