@@ -80,7 +80,7 @@ export class HealthPartnersPage {
       await this.page.getByText('Birth of child, adoption of').click();
       await this.page.getByRole('checkbox').check();
       await this.page.getByLabel('Enter the date of your event:').click();
-      await this.page.getByRole('cell', { name: '4' }).nth(1).click();
+      await this.page.getByRole('cell', { name: '2', exact: true }).first().click();
       await this.page.getByRole('link', { name: 'Save & Continue' }).click({force: true});
       await this.page.waitForLoadState('networkidle');
     }
