@@ -6,14 +6,16 @@ const fakeValue = {
   ...fakehealthPartners(),
 };
 
-test.setTimeout(1200000);
+test.setTimeout(180000);
 test('Health Partners Test', async ({ page }) => {
   const healthPartnersPage = new HealthPartnersPage(page);
     await healthPartnersPage.navigateToWelcomePage();
     await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome");
     await healthPartnersPage.clickGetStartedLink();
     await healthPartnersPage.SeeIfYouQualify();
+    await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/SpecialEnrollment");
     await healthPartnersPage.fillZipCode('55413');
+    await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics");
     await healthPartnersPage.fillFirstName(fakeValue.firstNameLocator);
     await healthPartnersPage.fillLastName(fakeValue.lastNameLocator);
     await healthPartnersPage.fillBirthDate('02/16/1987');
