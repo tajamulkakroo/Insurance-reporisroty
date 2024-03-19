@@ -221,7 +221,15 @@ async securityQuestionAndBroker(answer: string) {
   await this.securityQuestionLocator.selectOption('What was your childhood nickname?');
   await this.answerLocator.click();
   await this.answerLocator.fill(answer);
-  await this.page.getByLabel('No').check();
+  //await this.page.getByLabel('No').check();
+  await this.page.getByLabel('Yes').check();
+  await this.page.getByRole('button', { name: ' Search' }).click();
+  await this.page.locator('#ownerFirstName').click();
+  await this.page.locator('#ownerFirstName').fill('mr');
+  await this.page.locator('#ownerLastName').click();
+  await this.page.locator('#ownerLastName').fill('hello');
+  await this.page.locator('#ownerState').selectOption('DC');
+  await this.page.getByRole('button', { name: 'close' }).click();
   await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
