@@ -10,7 +10,7 @@ test.setTimeout(180000);
 test('Health Partners Test', async ({ page }) => {
   const healthPartnersPage = new HealthPartnersPage(page);
     await healthPartnersPage.navigateToWelcomePage();
-    await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome");
+    await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hphttps://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome/shopping/anonymous.html#welcome");
     
     await healthPartnersPage.clickGetStartedLink();
     await healthPartnersPage.SeeIfYouQualify();

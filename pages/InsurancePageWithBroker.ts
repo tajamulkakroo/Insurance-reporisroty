@@ -1,7 +1,7 @@
 import { test, expect, Page, Locator } from '@playwright/test';
 
 
-export class HealthPartnersPage {
+export class InsurancePageWithBroker {
   private readonly page: Page;
   readonly zipCodeLocator: Locator;
   readonly firstNameLocator: Locator;
@@ -195,7 +195,19 @@ async securityQuestionAndBroker(answer: string) {
   await this.securityQuestionLocator.selectOption('What was your childhood nickname?');
   await this.answerLocator.click();
   await this.answerLocator.fill(answer);
-  await this.page.getByLabel('No').check();    
+  
+}
+
+async brokerDetails(){
+
+  await this.page.getByLabel('Yes').check();
+  await this.page.getByRole('button', { name: ' Search' }).click();
+  await this.page.locator('#ownerFirstName').click();
+  await this.page.locator('#ownerFirstName').fill('daniel');
+  await this.page.locator('#ownerLastName').click();
+  await this.page.locator('#ownerLastName').fill('michels');
+  await this.page.getByRole('button', { name: 'Search', exact: true }).click();
+  await this.page.getByRole('button', { name: 'Select' }).click();
   await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
