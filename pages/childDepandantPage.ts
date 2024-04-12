@@ -37,39 +37,15 @@ export class ChildDepandantPage {
 
   async SeeIfYouQualify() {
       
-      await this.page.getByRole('link', { name: 'See if you qualify' }).click();
-      await this.page.waitForLoadState('domcontentloaded');
-      //await this.page.waitForSelector('a.btn.btn-primary._saveEvent.pull-right.has-tooltip');
-      await this.page.getByText('Birth of child, adoption of').click();
-      await this.page.getByRole('checkbox').check();
-      await this.page.getByLabel('Enter the date of your event:').click();
-      await this.page.getByRole('cell', { name: '2', exact: true }).first().click();
-      //await this.page.locator('a.btn.btn-primary._saveEvent.pull-right.has-tooltip').waitFor();
-      //await this.page.locator('a.btn.btn-primary._saveEvent.pull-right.has-tooltip').click();
-      //await this.page.getByText('Clear').click();
-      //await this.page.getByRole('link', { name: 'SAVE & CONTINUE' }).waitFor();
-      await this.page.getByRole('link', { name: 'SAVE & CONTINUE' }).click();
-      for (let attempt = 1; attempt <= 3; attempt++) {
-        try {
-            await this.page.getByRole('link', { name: 'SAVE & CONTINUE' }).click({ timeout: 3000 });
-            console.log(`Attempt ${attempt}: Click successful`);
-            return; // Exit the loop if the click is successful
-        } catch (error) {
-            console.error(`Attempt ${attempt}: ERROR waiting for or clicking: ${error.message}`);
-            if (attempt < 3) {
-                console.log(`Attempt ${attempt}: Trying again...`);
-                // Wait for a short period before trying again
-                await this.page.waitForTimeout(1000);
-            } else {
-                console.error(`Attempt ${attempt}: All attempts failed. Exiting.`);
-                throw error; // Throw the error if all attempts fail
-            }
-        } 
-        }
-
-      //await this.page.waitForLoadState('domcontentloaded');
-      //await this.page.waitForLoadState('networkidle');
-    }
+    await this.page.getByRole('link', { name: 'See if you qualify' }).click();
+    await this.page.waitForLoadState('domcontentloaded');
+    await this.page.getByText('Birth of child, adoption of').click();
+    await this.page.getByRole('checkbox').check();
+    await this.page.getByLabel('Enter the date of your event:').click();
+    await this.page.getByRole('cell', { name: '2', exact: true }).first().click();
+    await this.page.locator('.btn.btn-primary._saveEvent.pull-right.has-tooltip').click();
+    
+  }
   
 
   async fillZipCode(zipCode: string) {
