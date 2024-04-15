@@ -274,7 +274,7 @@ async verifySubmission() {
   await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
-async  submitForm(firstName: string, lastName: string){
+async  submitForm(lastName: string){
   await this.page.locator('#CHECKBOX1FE4964A4AE79DA3DAF6').check;
   await this.page.locator('#CHECKBOX81B9EA3022BEAD60G1A4').check;
   /*await this.applicantFirstNameLocator.click();

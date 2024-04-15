@@ -11,7 +11,6 @@ test('Insurance test with Broker', async ({ page }) => {
     const insurancePage = new InsurancePageWithBroker(page);
     await insurancePage.navigateToWelcomePage();
     await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome");
-    
     await insurancePage.clickGetStartedLink();
     await insurancePage.SeeIfYouQualify();
     await insurancePage.saveAndContinue();
@@ -42,8 +41,8 @@ test('Insurance test with Broker', async ({ page }) => {
     await insurancePage.familyMembers();
     await insurancePage.planInformation();
     await insurancePage.uploadFile();
-    await insurancePage.paymentOptions(fakeValue.firstNameLocator, fakeValue.lastNameLocator);
+    await insurancePage.paymentOptions(fakeValue.lastNameLocator);
     await insurancePage.verifySubmission();
-    await insurancePage.submitForm(fakeValue.firstNameLocator, fakeValue.lastNameLocator);
+    await insurancePage.submitForm( fakeValue.lastNameLocator);
 
 });
