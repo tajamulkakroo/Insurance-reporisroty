@@ -96,9 +96,9 @@ export class HealthPartnersPage {
     await this.zipCodeLocator.fill(zipCode);
   }
 
-  async fillFirstName(firstName: string) {
+  async fillFirstName() {
     await this.firstNameLocator.click();
-    await this.firstNameLocator.fill(firstName);
+    await this.firstNameLocator.fill('Test');
   }
 
   async fillLastName(lastName: string) {
@@ -240,13 +240,13 @@ async uploadFile() {
   await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
-async paymentOptions(firstName: string, lastName: string) {
+async paymentOptions(lastName: string) {
 
   await this.page.getByRole('radio', { name: 'NO', exact: true }).check();
   await this.page.getByLabel('No, I prefer to get and pay').check();
   await this.page.getByLabel('Credit/Debit Card').check(); 
   await this.creditCardFirstNameLocator.click();
-  await this.creditCardFirstNameLocator.fill(firstName);
+  await this.creditCardFirstNameLocator.fill('Test');
   await this.creditCardLastNameLocator.click();
   await this.creditCardLastNameLocator.fill(lastName);
   await this.page.getByLabel('Visa').check();
@@ -262,7 +262,7 @@ async verifySubmission() {
   await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
-async  submitForm(firstName: string, lastName: string){
+async  submitForm(lastName: string){
   await this.page.locator('#CHECKBOX1FE4964A4AE79DA3DAF6').check;
   await this.page.locator('#CHECKBOX81B9EA3022BEAD60G1A4').check;
   /*await this.applicantFirstNameLocator.click();

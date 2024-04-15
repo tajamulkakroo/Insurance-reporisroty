@@ -10,14 +10,13 @@ test.setTimeout(180000);
 test('Health Partners Test', async ({ page }) => {
   const healthPartnersPage = new HealthPartnersPage(page);
     await healthPartnersPage.navigateToWelcomePage();
-    await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hphttps://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome/shopping/anonymous.html#welcome");
-    
+    await expect(page).toHaveURL('https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome');
     await healthPartnersPage.clickGetStartedLink();
     await healthPartnersPage.SeeIfYouQualify();
     await healthPartnersPage.saveAndContinue();
     await healthPartnersPage.fillZipCode('55413');
     await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics");
-    await healthPartnersPage.fillFirstName('Test');
+    await healthPartnersPage.fillFirstName();
     await healthPartnersPage.fillLastName(fakeValue.lastNameLocator);
     await healthPartnersPage.fillBirthDate('02/16/1987');
     await healthPartnersPage.selectGender(fakeValue.genderLocator);
@@ -41,8 +40,8 @@ test('Health Partners Test', async ({ page }) => {
     await healthPartnersPage.familyMembers();
     await healthPartnersPage.planInformation();
     await healthPartnersPage.uploadFile();
-    await healthPartnersPage.paymentOptions(fakeValue.firstNameLocator, fakeValue.lastNameLocator);
+    await healthPartnersPage.paymentOptions(fakeValue.lastNameLocator);
     await healthPartnersPage.verifySubmission();
-    await healthPartnersPage.submitForm(fakeValue.firstNameLocator, fakeValue.lastNameLocator);
+    await healthPartnersPage.submitForm(fakeValue.lastNameLocator);
 
 });
