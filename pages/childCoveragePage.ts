@@ -35,17 +35,17 @@ export class ChildCoveragePage {
   constructor(page: Page) {
     this.page = page;
     this.zipCodeLocator = this.page.locator('#zipCode29');
-    this.firstNameLocator = this.page.locator('#firstName22');
-    this.lastNameLocator = this.page.locator('#lastName23');
-    this.birthDateLocator = this.page.locator('#birthDate24');
-    this.genderLocator = this.page.locator('#gender26');
-    this.childGenderLocator = this.page.locator('#gender42');
-    this.smokerLocator = this.page.locator('#isSmoker27');
-    this.dependentFirstNameLocator = this.page.locator('#firstName38');
-    this.dependentLastNameLocator = this.page.locator('#lastName39');
-    this.dependentBirthDateLocator = this.page.locator('#birthDate40');
-    this.relationshipLocator = this.page.locator('#memberRelationship41');
-    this.childSmokerLocator = this.page.locator('#isSmoker43')
+    this.firstNameLocator = this.page.locator('#firstName32');
+    this.lastNameLocator = this.page.locator('#lastName33');
+    this.birthDateLocator = this.page.locator('#birthDate34');
+    this.genderLocator = this.page.locator('#gender36');
+    this.smokerLocator = this.page.locator('#isSmoker37');
+    this.dependentFirstNameLocator = this.page.locator('#firstName44');
+    this.dependentLastNameLocator = this.page.locator('#lastName45');
+    this.dependentBirthDateLocator = this.page.locator('#birthDate46');
+    this.relationshipLocator = this.page.locator('#memberRelationship47');
+    this.childGenderLocator = this.page.locator('#gender48');
+    this.childSmokerLocator = this.page.locator('#isSmoker49')
     this.emailLocator = this.page.locator('#priorToApplyingForm_priorToApplyingInfo_userProfile_user_emailAddress');
     this.userIdLocator = this.page.locator('#priorToApplyingForm_priorToApplyingInfo_registrationInfo_userId');
     this.passwordLocator  = this.page.locator('#priorToApplyingForm_priorToApplyingInfo_registrationInfo_password');
@@ -117,10 +117,7 @@ export class ChildCoveragePage {
     await this.genderLocator.selectOption(gender);
   }
 
-  async selectSmokerOption(option: string) {
-    await this.smokerLocator.click();
-    await this.smokerLocator.selectOption(option);
-  }
+
 
   async clickAddDependentLink() {
     await this.page.getByRole('link', { name: 'Add Dependent' }).click();
@@ -150,10 +147,6 @@ export class ChildCoveragePage {
     await this.childGenderLocator.selectOption(gender);
   }
 
-  async selectSmokerOptionForDepandant(option: string) {
-    await this.childSmokerLocator.click();
-    await this.childSmokerLocator.selectOption(option);
-  }
 
   async clickContinueLink() {
     await this.page.getByRole('link', { name: 'Continue' }).click();

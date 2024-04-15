@@ -18,16 +18,14 @@ test('Child Coverage Only', async ({ page }) => {
     await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics");
     await childCoveragePage.fillFirstName();
     await childCoveragePage.fillLastName(fakeValue.lastNameLocator);
-    await childCoveragePage.fillBirthDate('02/16/1987');
+    await childCoveragePage.fillBirthDate('02/16/2015');
     await childCoveragePage.selectGender(fakeValue.genderLocator);
-    await childCoveragePage.selectSmokerOption(fakeValue.smokerLocator);
     await childCoveragePage.clickAddDependentLink();
     await childCoveragePage.fillDependentFirstName(fakeValue.dependentFirstNameLocator);
     await childCoveragePage.fillDependentLastName(fakeValue.dependentLastNameLocator);
-    await childCoveragePage.fillDependentBirthDate('12/18/2001');
+    await childCoveragePage.fillDependentBirthDate('12/18/2014');
     await childCoveragePage.selectDependentRelationship(fakeValue.relationshipLocator);
     await childCoveragePage.selectDependentGender(fakeValue.childGenderLocator);
-    await childCoveragePage.selectSmokerOptionForDepandant(fakeValue.childSmokerLocator);
     await childCoveragePage.clickContinueLink();
     await childCoveragePage.selectBrowseAllPlans();
     await childCoveragePage.addToCart();
