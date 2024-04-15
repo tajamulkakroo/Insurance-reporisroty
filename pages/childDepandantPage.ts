@@ -78,6 +78,11 @@ export class ChildDepandantPage {
     await this.smokerLocator.click();
     await this.smokerLocator.selectOption(option);
   }
+  async clickContinueLink() {
+    await this.page.getByRole('link', { name: 'Continue' }).click();
+    await this.page.waitForLoadState('networkidle');
+  }
+  
 
 
 

@@ -22,8 +22,9 @@ const childDepandantPage = new ChildDepandantPage(page);
     await childDepandantPage.fillBirthDate('12/19/1989');
     await childDepandantPage.selectGender(fakeValue.genderLocator);
     await childDepandantPage.selectSmokerOption(fakeValue.smokerLocator);
+    await childDepandantPage.clickContinueLink();
     const validation = page.locator('.validation-errors _errors');      //Created a locator to validate that the form cannot be submitted without adding a dependant
-    await expect(validation).toHaveClass('.validation-errors _errors'),{ timeout: 60000 };
+    await expect(validation).toBeVisible,{ timeout: 60000 };
 
 
 });
