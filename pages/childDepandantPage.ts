@@ -27,23 +27,23 @@ export class ChildDepandantPage {
 
   async navigateToWelcomePage() {
     await this.page.goto('https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome');
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('domcontentloaded');
   }
 
   async clickGetStartedLink() {
     await this.page.getByRole('link', { name: 'Get started' }).click();
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('domcontentloaded');
   }
 
   async SeeIfYouQualify() {
       
-    await this.page.getByRole('link', { name: 'See if you qualify' }).click();
-    await this.page.waitForLoadState('domcontentloaded');
+    await this.page.getByRole('link', { name: 'See if you qualify' }).click(),{ timeout: 30000 };
     await this.page.getByText('Birth of child, adoption of').click();
-    await this.page.getByRole('checkbox').check();
     await this.page.getByLabel('Enter the date of your event:').click();
     await this.page.getByRole('cell', { name: '2', exact: true }).first().click();
+    await this.page.getByRole('checkbox').check();
     await this.page.locator('.btn.btn-primary._saveEvent.pull-right.has-tooltip').click();
+    await this.page.waitForLoadState('domcontentloaded');
     
   }
   
