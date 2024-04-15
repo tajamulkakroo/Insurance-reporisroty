@@ -1,4 +1,4 @@
-import { test, expect, Page, Locator } from '@playwright/test';
+import {Page, Locator } from '@playwright/test';
 
 
 export class ChildDepandantPage {
@@ -50,7 +50,6 @@ export class ChildDepandantPage {
 
   async fillZipCode(zipCode: string) {
     await this.zipCodeLocator.waitFor({ state: 'visible' }); // Wait for element to be visible
-    //await this.page.waitForSelector('#zipCode29', { timeout: 30000 });
     await this.zipCodeLocator.click();
     await this.zipCodeLocator.fill(zipCode);
   }
