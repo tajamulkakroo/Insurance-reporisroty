@@ -7,7 +7,7 @@ const fakeValue = {
 };
 
 test.setTimeout(180000)
-test('child dependant test', async ({ page }) => {
+test('Ensure that the form cannot be submitted unless a dependent is added', async ({ page }) => {
 
 const childDepandantPage = new ChildDepandantPage(page);
     await childDepandantPage.navigateToWelcomePage();
@@ -22,6 +22,8 @@ const childDepandantPage = new ChildDepandantPage(page);
     await childDepandantPage.fillBirthDate('12/19/1989');
     await childDepandantPage.selectGender(fakeValue.genderLocator);
     await childDepandantPage.selectSmokerOption(fakeValue.smokerLocator);
+    const validation = page.locator('.validation-errors _errors');      //Created a locator to validate that the form cannot be submitted without adding a dependant
+    await expect(validation).toHaveClass('.validation-errors _errors'),{ timeout: 60000 };
 
 
 });
