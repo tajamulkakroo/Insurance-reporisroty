@@ -14,7 +14,7 @@ test('Health Partners Test', async ({ page }) => {
     
     await healthPartnersPage.clickGetStartedLink();
     await healthPartnersPage.SeeIfYouQualify();
-    await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/SpecialEnrollment");
+    await healthPartnersPage.saveAndContinue();
     await healthPartnersPage.fillZipCode('55413');
     await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics");
     await healthPartnersPage.fillFirstName('Test');

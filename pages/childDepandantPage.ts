@@ -1,4 +1,4 @@
-import {Page, Locator } from '@playwright/test';
+import {Page, expect, Locator } from '@playwright/test';
 
 
 export class ChildDepandantPage {
@@ -42,11 +42,15 @@ export class ChildDepandantPage {
     await this.page.getByLabel('Enter the date of your event:').click();
     await this.page.getByRole('cell', { name: '2', exact: true }).first().click();
     await this.page.getByRole('checkbox').check();
-    await this.page.locator('.btn.btn-primary._saveEvent.pull-right.has-tooltip').click();
-    await this.page.waitForLoadState('domcontentloaded');
-    
   }
-  
+ 
+  async saveAndContinue(){
+
+    await expect(async () => {
+      await this.page.getByRole('link', { name: "SAVE & CONTINUE" }).click()
+      await expect(this.page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics")
+      }).toPass()
+  }
 
   async fillZipCode(zipCode: string) {
     await this.zipCodeLocator.waitFor({ state: 'visible' }); // Wait for element to be visible

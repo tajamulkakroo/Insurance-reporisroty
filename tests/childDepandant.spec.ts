@@ -14,7 +14,7 @@ const childDepandantPage = new ChildDepandantPage(page);
     await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome");
     await childDepandantPage.clickGetStartedLink();
     await childDepandantPage.SeeIfYouQualify();
-    await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/SpecialEnrollment");
+    await childDepandantPage.saveAndContinue();
     await childDepandantPage.fillZipCode('55413');
     await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics");
     await childDepandantPage.fillFirstName('Test');

@@ -75,15 +75,20 @@ export class HealthPartnersPage {
 
   async SeeIfYouQualify() {
       
-      await this.page.getByRole('link', { name: 'See if you qualify' }).click();
-      await this.page.waitForLoadState('domcontentloaded');
-      await this.page.getByText('Birth of child, adoption of').click();
-      await this.page.getByRole('checkbox').check();
-      await this.page.getByLabel('Enter the date of your event:').click();
-      await this.page.getByRole('cell', { name: '2', exact: true }).first().click();
-      await this.page.getByRole('link', { name: 'SAVE & CONTINUE' }).click();
-      
-    }
+    await this.page.getByRole('link', { name: 'See if you qualify' }).click(),{ timeout: 30000 };
+    await this.page.getByText('Birth of child, adoption of').click();
+    await this.page.getByLabel('Enter the date of your event:').click();
+    await this.page.getByRole('cell', { name: '2', exact: true }).first().click();
+    await this.page.getByRole('checkbox').check();
+  }
+
+  async saveAndContinue(){
+
+    await expect(async () => {
+      await this.page.getByRole('link', { name: "SAVE & CONTINUE" }).click()
+      await expect(this.page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics")
+      }).toPass()
+  }
   
 
   async fillZipCode(zipCode: string) {

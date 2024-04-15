@@ -14,7 +14,7 @@ test('Insurance test with Broker', async ({ page }) => {
     
     await insurancePage.clickGetStartedLink();
     await insurancePage.SeeIfYouQualify();
-    await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/SpecialEnrollment");
+    await insurancePage.saveAndContinue();
     await insurancePage.fillZipCode('55413');
     await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics");
     await insurancePage.fillFirstName('Test');

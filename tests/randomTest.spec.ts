@@ -10,8 +10,11 @@ test('checking the locator for qualify', async ({page}) => {
      await page.getByRole('checkbox').check();
       await page.getByLabel('Enter the date of your event:').click();
       await page.getByRole('cell', { name: '2', exact: true }).first().click();
-      await page.getByRole('link', { name: "SAVE & CONTINUE" }).click();
+      await expect(async () => {
+      await page.getByRole('link', { name: "SAVE & CONTINUE" }).click()
+      await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics")
+      }).toPass()
       await page.waitForURL('https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics');
       await page.locator('#zipCode29').fill('55413');
 
-})
+});
