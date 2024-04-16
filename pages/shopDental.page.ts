@@ -174,29 +174,7 @@ export class ShopDentalPage{
         await this.insurerAddress.fill(insAddress)
         await this.insurerCity.click();
         await this.insurerCity.fill(insCity);
-
-        await this.page.getByRole('combobox').click();
-
-        /*****************************************************************************************************************************
-         * 
-         * 
-         * 
-         * Note to Prashanth:
-         * Please find the element to select "MN" for the State within the Current med insurance information page
-         * 
-         * 
-         * 
-         ****************************************************************************************************************************/
-
-        //await this.page.locator('[state = "#FELECDDE2737B0298E4D826"]').selectOption('MN');
-
-        /*
-        const state = await this.page.$('#FELECDDE2737B0298E4D826');
-        state?.selectOption("MN"); //unable to select MN because element is not visible
-        */
-
-        //await this.page.selectOption('#FELECDDE2737B0298E4D826', { value: "MN" });
-
+        await this.page.getByRole('combobox').selectOption('MN');
         await this.insurerZipCode.click();
         await this.insurerZipCode.fill(insZip);
         await this.policyID.click();
