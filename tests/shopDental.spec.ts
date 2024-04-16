@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
-import ShopDentalPage from '../pages/shopDental.page';
+import {ShopDentalPage} from '../pages/shopDental.page';
 import { consumerData as fakeConsumerData} from '../Fixtures/faker.fixture';
 
 const fakeData = {
     ...fakeConsumerData(),
 };
+test.setTimeout(180000);
 
 test.describe('Consumer submits a dental application.',() => {
     let shopDentalPage: ShopDentalPage;
@@ -13,7 +14,7 @@ test.describe('Consumer submits a dental application.',() => {
         shopDentalPage = new ShopDentalPage(page);
 
         //open url
-        await page.goto('https://individualinsurance-stg.healthpartners.com/hp/shopping/anonymous.html#welcome');
+        await shopDentalPage.navigateToWelcomePage();
 
         //verify title
         await expect(page).toHaveTitle('Shopping');

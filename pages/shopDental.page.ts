@@ -1,6 +1,6 @@
 import {Page, Locator} from '@playwright/test';
 
-class ShopDentalPage{
+export class ShopDentalPage{
     private readonly page: Page;
     readonly zipCode: Locator;
     readonly p_firstName: Locator;
@@ -60,6 +60,11 @@ class ShopDentalPage{
         this.acctNum = this.page.locator('input[name="Application\\.AutoPay_Setup\\.Bank_Account_Number"]');
 
     }
+
+    async navigateToWelcomePage() {
+        await this.page.goto('https://individualinsurance-stg.healthpartners.com/hp/shopping/anonymous.html#welcome');
+        await this.page.waitForLoadState('networkidle');
+      }
 
     //click Looking for Dental plans
     async clickDental(){
@@ -240,5 +245,3 @@ class ShopDentalPage{
     ****************************************************************************************************************************/
 
 }
-
-export default ShopDentalPage;
