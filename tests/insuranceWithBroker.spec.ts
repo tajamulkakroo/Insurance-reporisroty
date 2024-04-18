@@ -16,7 +16,7 @@ test('Insurance test with Broker', async ({ page }) => {
     await insurancePage.saveAndContinue();
     await insurancePage.fillZipCode('55413');
     await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics");
-    await insurancePage.fillFirstName('Test');
+    await insurancePage.fillFirstName('TESTAUTO');
     await insurancePage.fillLastName(fakeValue.lastNameLocator);
     await insurancePage.fillBirthDate('02/16/1987');
     await insurancePage.selectGender(fakeValue.genderLocator);

@@ -258,7 +258,7 @@ async paymentOptions(lastName: string) {
   await this.page.getByLabel('No, I prefer to get and pay').check();
   await this.page.getByLabel('Credit/Debit Card').check(); 
   await this.creditCardFirstNameLocator.click();
-  await this.creditCardFirstNameLocator.fill('Test');
+  await this.creditCardFirstNameLocator.fill('TESTAUTO');
   await this.creditCardLastNameLocator.click();
   await this.creditCardLastNameLocator.fill(lastName);
   await this.page.getByLabel('Visa').check();

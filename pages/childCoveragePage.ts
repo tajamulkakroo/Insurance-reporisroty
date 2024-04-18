@@ -100,7 +100,7 @@ export class ChildCoveragePage {
 
   async fillFirstName() {
     await this.firstNameLocator.click();
-    await this.firstNameLocator.fill('Test');
+    await this.firstNameLocator.fill('TESTAUTO');
   }
 
   async fillLastName(lastName: string) {

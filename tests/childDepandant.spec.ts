@@ -17,7 +17,7 @@ const childDepandantPage = new ChildDepandantPage(page);
     await childDepandantPage.saveAndContinue();
     await childDepandantPage.fillZipCode('55413');
     await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics");
-    await childDepandantPage.fillFirstName('Test');
+    await childDepandantPage.fillFirstName('TESTAUTO');
     await childDepandantPage.fillLastName(fakeValue.lastNameLocator);
     await childDepandantPage.fillBirthDate('12/19/1989');
     await childDepandantPage.selectGender(fakeValue.genderLocator);
