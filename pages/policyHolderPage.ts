@@ -76,10 +76,9 @@ export class PolicyHolderPage {
   async SeeIfYouQualify() {
       
     await this.page.getByRole('link', { name: 'See if you qualify' }).click(),{ timeout: 30000 };
-    await this.page.getByText('Birth of child, adoption of').click();
+    await this.page.getByLabel('Loss of other coverage (e.g.').check();
     await this.page.getByLabel('Enter the date of your event:').click();
     await this.page.getByRole('cell', { name: '2', exact: true }).first().click();
-    await this.page.getByRole('checkbox').check();
   }
 
   async saveAndContinue(){
@@ -187,14 +186,16 @@ async startEnrolment(address: string, city: string, phone: string){
 }
 
 
+//add a function here
 
+async previousHealthPlan() {
 
-async planInformation(){
-
-  await this.page.getByLabel('No').first().check();
-  await this.page.getByLabel('No').nth(2).check();
+  await this.page.locator('#RADIO71FE75CC4G4GB17D54CA').check();
   await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
+
+
+
 
 async uploadFile() {
 

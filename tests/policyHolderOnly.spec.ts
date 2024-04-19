@@ -30,7 +30,7 @@ test('Health Partners Test', async ({ page }) => {
     await policyHolderPage.userIDAndPassword(fakeValue.userIdLocator, fakeValue.passwordLocator);
     await policyHolderPage.securityQuestionAndBroker(fakeValue.answerLocator);
     await policyHolderPage.startEnrolment(fakeValue.addressLocator, fakeValue.cityLocator, fakeValue.phoneLocator);
-    await policyHolderPage.planInformation();
+    await policyHolderPage.previousHealthPlan();
     await policyHolderPage.uploadFile();
     await policyHolderPage.paymentOptions(fakeValue.lastNameLocator);
     await policyHolderPage.verifySubmission();
