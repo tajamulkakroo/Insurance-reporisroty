@@ -8,7 +8,7 @@ export const SpouseFixture = () => ({
     dependentLastNameLocator: faker.random.word({ count: 6 }),
     relationshipLocator: faker.random.arrayElement(['Spouse']),
     childGenderLocator: faker.random.arrayElement(['Female']),
-    childSmokerLocator: faker.random.arrayElement(['Yes', 'No']),
+    childSmokerLocator: faker.random.arrayElement(['No']),
     emailLocator: faker.internet.email(),
     userIdLocator: faker.datatype.number({ min: Math.pow(10, 15), max: Math.pow(10, 16) - 1 }).toString(),
     passwordLocator: faker.internet.password(9, false, /[a-zA-Z0-9]/),

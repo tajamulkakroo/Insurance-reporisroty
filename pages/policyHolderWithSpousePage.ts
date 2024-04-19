@@ -76,10 +76,10 @@ export class SpousePage {
   async SeeIfYouQualify() {
       
     await this.page.getByRole('link', { name: 'See if you qualify' }).click(),{ timeout: 30000 };
-    await this.page.getByText('Birth of child, adoption of').click();
+    await this.page.getByLabel('Marriage').check();
     await this.page.getByLabel('Enter the date of your event:').click();
     await this.page.getByRole('cell', { name: '2', exact: true }).first().click();
-    await this.page.getByRole('checkbox').check();
+  
   }
 
   async saveAndContinue(){
