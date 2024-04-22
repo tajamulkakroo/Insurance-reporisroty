@@ -162,8 +162,11 @@ export class Familywith4childrenPage {
     await this.page.locator('#lastName57').fill('Last name child1');
     await this.page.locator('#birthDate58').click();
     await this.page.locator('#birthDate58').fill('01/01/2010');
+    await this.page.locator('memberRelationship59').click();
     await this.page.locator('memberRelationship59').selectOption('CHILD');
+    await this.page.locator('#gender60').click();
     await this.page.locator('#gender60').selectOption('MALE');
+    await this.page.locator('#isSmoker61').click();
     await this.page.locator('#isSmoker61').selectOption('NO');
 
  }
@@ -177,8 +180,11 @@ export class Familywith4childrenPage {
     await this.page.locator('#lastName81').fill('Last name child2');
     await this.page.locator('#birthDate82').click();
     await this.page.locator('#birthDate82').fill('01/01/2012');
+    await this.page.locator('memberRelationship83').click();
     await this.page.locator('memberRelationship83').selectOption('CHILD');
+    await this.page.locator('#gender84').click();
     await this.page.locator('#gender84').selectOption('MALE');
+    await this.page.locator('#isSmoker85').click();
     await this.page.locator('#isSmoker85').selectOption('NO');
 
  }
@@ -192,8 +198,11 @@ export class Familywith4childrenPage {
     await this.page.locator('#lastName111').fill('Last name child3');
     await this.page.locator('#birthDate112').click();
     await this.page.locator('#birthDate112').fill('01/01/2014');
-    await this.page.locator('memberRelationship113').selectOption('CHILD');
+    await this.page.locator('#memberRelationship113').click();
+    await this.page.locator('#memberRelationship113').selectOption('CHILD');
+    await this.page.locator('#gender114').click();
     await this.page.locator('#gender114').selectOption('MALE');
+    await this.page.locator('#isSmoker115').click();
     await this.page.locator('#isSmoker115').selectOption('NO');
 
  }
@@ -207,8 +216,11 @@ export class Familywith4childrenPage {
     await this.page.locator('#lastName147').fill('Last name child4');
     await this.page.locator('#birthDate148').click();
     await this.page.locator('#birthDate148').fill('01/01/2016');
-    await this.page.locator('memberRelationship149').selectOption('CHILD');
+    await this.page.locator('#memberRelationship149').click();
+    await this.page.locator('#memberRelationship149').selectOption('CHILD');
+    await this.page.locator('#gender150').click();
     await this.page.locator('#gender150').selectOption('MALE');
+    await this.page.locator('#isSmoker151').click();
     await this.page.locator('#isSmoker151').selectOption('NO');
 
  }
