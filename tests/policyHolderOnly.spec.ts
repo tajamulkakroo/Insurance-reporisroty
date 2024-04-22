@@ -7,7 +7,7 @@ const fakeValue = {
 };
 
 test.setTimeout(180000);
-test('Health Partners Test', async ({ page }) => {
+test('test for Policy holder only', async ({ page }) => {
   const policyHolderPage = new PolicyHolderPage(page);
     await policyHolderPage.navigateToWelcomePage();
     await expect(page).toHaveURL('https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome');

@@ -7,7 +7,7 @@ const fakeValue = {
 };
 
 test.setTimeout(180000);
-test('Health Partners Test', async ({ page }) => {
+test('Family with 4 children test', async ({ page }) => {
   const  familyPage = new Familywith4childrenPage(page);
     await familyPage.navigateToWelcomePage();
     await expect(page).toHaveURL('https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome');
