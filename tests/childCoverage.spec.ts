@@ -36,6 +36,7 @@ test('Child Coverage Only', async ({ page }) => {
     await childCoveragePage.securityQuestionAndBroker(fakeValue.answerLocator);
     await childCoveragePage.startEnrolment(fakeValue.addressLocator, fakeValue.cityLocator, fakeValue.phoneLocator);
     await childCoveragePage.familyMembers();
+    await childCoveragePage.guardianDetails();
     await childCoveragePage.planInformation();
     await childCoveragePage.uploadFile();
     await childCoveragePage.paymentOptions(fakeValue.lastNameLocator);

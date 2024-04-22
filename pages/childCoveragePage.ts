@@ -217,9 +217,21 @@ async familyMembers(){
    await this.page.locator('div').filter({ hasText: /^\*Same address as primary applicant\? YesNo$/ }).getByLabel('Yes').check();
    await this.page.waitForLoadState('networkidle');
    await this.page.getByLabel('Check this box if applicant').check();
-   await this.page.getByRole('link', { name: 'Continue ' }).click();
+   //await this.page.getByRole('link', { name: 'Continue ' }).click();
   
 
+}
+
+async guardianDetails(){
+
+  await this.page.locator('input[name="Application\\.Applicant\\.Guardian\\.First_Name"]').click();
+  await this.page.locator('input[name="Application\\.Applicant\\.Guardian\\.First_Name"]').fill('This is for Guardian');
+  await this.page.locator('input[name="Application\\.Applicant\\.Guardian\\.Last_Name"]').click();
+  await this.page.locator('input[name="Application\\.Applicant\\.Guardian\\.Last_Name"]').fill('Lst name of Guardian');
+  await this.page.locator('select[name="Application\\.Applicant\\.Guardian\\.Relationship"]').selectOption('Legal Guardian');
+  await this.page.locator('input[name="Application\\.Applicant\\.Guardian\\.Home_Phone"]').click();
+  await this.page.getByRole('group', { name: 'Guardian information' }).getByLabel('Yes').check();
+  await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
 async planInformation(){
