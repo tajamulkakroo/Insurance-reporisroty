@@ -64,7 +64,7 @@ export class Familywith4childrenPage {
     }
 
   async navigateToWelcomePage() {
-    await this.page.goto('https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome');
+    await this.page.goto('https://individualinsurance-stg.healthpartners.com/hp/shopping/anonymous.html#welcome');
     await this.page.waitForLoadState('networkidle');
   }
 
@@ -86,7 +86,7 @@ export class Familywith4childrenPage {
 
     await expect(async () => {
       await this.page.getByRole('link', { name: "SAVE & CONTINUE" }).click()
-      await expect(this.page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics")
+      await expect(this.page).toHaveURL("https://individualinsurance-stg.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics")
       }).toPass()
   }
   
@@ -162,12 +162,12 @@ export class Familywith4childrenPage {
     await this.page.locator('#lastName57').fill('Last name child1');
     await this.page.locator('#birthDate58').click();
     await this.page.locator('#birthDate58').fill('01/01/2010');
-    await this.page.locator('memberRelationship59').click();
-    await this.page.locator('memberRelationship59').selectOption('CHILD');
+    await this.page.locator('#memberRelationship59').click();
+    await this.page.locator('#memberRelationship59').selectOption('CHILD');
     await this.page.locator('#gender60').click();
-    await this.page.locator('#gender60').selectOption('MALE');
-    await this.page.locator('#isSmoker61').click();
-    await this.page.locator('#isSmoker61').selectOption('NO');
+    await this.page.locator('#gender60').selectOption('Female');
+    //await this.page.locator('#isSmoker61').click();
+   // await this.page.locator('#isSmoker61').selectOption('NO');
 
  }
 
@@ -180,12 +180,12 @@ export class Familywith4childrenPage {
     await this.page.locator('#lastName81').fill('Last name child2');
     await this.page.locator('#birthDate82').click();
     await this.page.locator('#birthDate82').fill('01/01/2012');
-    await this.page.locator('memberRelationship83').click();
-    await this.page.locator('memberRelationship83').selectOption('CHILD');
+    await this.page.locator('#memberRelationship83').click();
+    await this.page.locator('#memberRelationship83').selectOption('CHILD');
     await this.page.locator('#gender84').click();
-    await this.page.locator('#gender84').selectOption('MALE');
-    await this.page.locator('#isSmoker85').click();
-    await this.page.locator('#isSmoker85').selectOption('NO');
+    await this.page.locator('#gender84').selectOption('M');
+    //await this.page.locator('#isSmoker85').click();
+    //await this.page.locator('#isSmoker85').selectOption('NO');
 
  }
 
@@ -201,9 +201,9 @@ export class Familywith4childrenPage {
     await this.page.locator('#memberRelationship113').click();
     await this.page.locator('#memberRelationship113').selectOption('CHILD');
     await this.page.locator('#gender114').click();
-    await this.page.locator('#gender114').selectOption('MALE');
-    await this.page.locator('#isSmoker115').click();
-    await this.page.locator('#isSmoker115').selectOption('NO');
+    await this.page.locator('#gender114').selectOption('F');
+    //await this.page.locator('#isSmoker115').click();
+    //await this.page.locator('#isSmoker115').selectOption('NO');
 
  }
 
@@ -219,9 +219,9 @@ export class Familywith4childrenPage {
     await this.page.locator('#memberRelationship149').click();
     await this.page.locator('#memberRelationship149').selectOption('CHILD');
     await this.page.locator('#gender150').click();
-    await this.page.locator('#gender150').selectOption('MALE');
-    await this.page.locator('#isSmoker151').click();
-    await this.page.locator('#isSmoker151').selectOption('NO');
+    await this.page.locator('#gender150').selectOption('M');
+    //await this.page.locator('#isSmoker151').click();
+    //await this.page.locator('#isSmoker151').selectOption('NO');
 
  }
 
@@ -289,24 +289,85 @@ async startEnrolment(address: string, city: string, phone: string){
   await this.phoneLocator.click();
   await this.phoneLocator.fill(phone);
   await this.page.getByLabel('Check this box if applicant').check();
+  await this.page.getByLabel('No, not of Hispanic, Latino/a, or Spanish origin').check();
+  await this.page.getByLabel('White').check();
+  await this.page.getByLabel('American Indian or Alaska Native').check();
   await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
 async familyMembers(){
+   
    await this.page.locator('input[name="Application\\.Dependent\\[0\\]\\.Middle_Initial"]').click();
-   await this.page.locator('div').filter({ hasText: /^\*Same address as primary applicant\? YesNo$/ }).getByLabel('Yes').check();
+   await this.page.locator('[id="FEL52994447A65BE2D4283F\\[0\\]"] > .radioFields > div > .radio-choice-label').first().check();
    await this.page.waitForLoadState('networkidle');
-   await this.page.getByLabel('Check this box if applicant').check();
+   await this.page.locator('input[name="Application.Dependent[0].SSN_Not_Required"]').check();
+   await this.page.locator('input[name="Application.Dependent[0].Ethnicities"]').first().check();
+   await this.page.locator('input[name="Application.Dependent[0].Races"]').first().check();
+   await this.page.locator('input[name="Application.Dependent[0].Races"]').nth(3).check();
+//child1 member info
+   await this.page.locator('input[name="Application.Dependent[1].Middle_Initial"]').click();
+   await this.page.locator('[id="FEL52994447A65BE2D4283F\\[1\\]"] > .radioFields > div > .radio-choice-label').first().click();
+   await this.page.waitForLoadState('networkidle');
+   await this.page.locator('input[name="Application.Dependent[1].SSN_Not_Required"]').check();
+   await this.page.locator('input[name="Application.Dependent[1].Ethnicities"]').first().check();
+   await this.page.locator('input[name="Application.Dependent[1].Races"]').first().check();
+   await this.page.locator('input[name="Application.Dependent[1].Races"]').nth(3).check();
+   //child2 member info
+   await this.page.locator('input[name="Application.Dependent[2].Middle_Initial"]').click();
+   await this.page.locator('[id="FEL52994447A65BE2D4283F\\[2\\]"] > .radioFields > div > .radio-choice-label').first().click();
+   await this.page.waitForLoadState('networkidle');
+   await this.page.locator('input[name="Application.Dependent[2].SSN_Not_Required"]').check();
+   await this.page.locator('input[name="Application.Dependent[2].Ethnicities"]').first().check();
+   await this.page.locator('input[name="Application.Dependent[2].Races"]').first().check();
+   await this.page.locator('input[name="Application.Dependent[2].Races"]').nth(3).check();
+   
+   //child3 member info
+   await this.page.locator('input[name="Application.Dependent[3].Middle_Initial"]').click();
+   await this.page.locator('[id="FEL52994447A65BE2D4283F\\[3\\]"] > .radioFields > div > .radio-choice-label').first().click();
+   await this.page.waitForLoadState('networkidle');
+   await this.page.locator('input[name="Application.Dependent[3].SSN_Not_Required"]').check();
+   await this.page.locator('input[name="Application.Dependent[3].Ethnicities"]').first().check();
+   await this.page.locator('input[name="Application.Dependent[3].Races"]').first().check();
+   await this.page.locator('input[name="Application.Dependent[3].Races"]').nth(3).check();
+ 
+   //child4 member info
+   await this.page.locator('input[name="Application.Dependent[4].Middle_Initial"]').click();
+   await this.page.locator('[id="FEL52994447A65BE2D4283F\\[4\\]"] > .radioFields > div > .radio-choice-label').first().click();
+   await this.page.waitForLoadState('networkidle');
+   await this.page.locator('input[name="Application.Dependent[4].SSN_Not_Required"]').check();
+   await this.page.locator('input[name="Application.Dependent[4].Ethnicities"]').first().check();
+   await this.page.locator('input[name="Application.Dependent[4].Races"]').first().check();
+   await this.page.locator('input[name="Application.Dependent[4].Races"]').nth(3).check();
    await this.page.getByRole('link', { name: 'Continue ' }).click();
-  
-
+   
 }
 
 async planInformation(){
 
+  //await this.page.locator('input[name="Application.Have_Previous_Coverage"]').nth(2).click();
   await this.page.getByLabel('No').first().check();
   await this.page.getByLabel('No').nth(2).check();
-  await this.page.getByRole('link', { name: 'Continue ' }).click();
+  await this.page.getByRole('group', { name: 'First Child Last name child' }).getByLabel('No').first().click();
+  await this.page.getByRole('group', { name: 'lime calculating' }).getByLabel('No').first().click();
+  await this.page.locator('input[name="Application.Dependent[2].Have_Previous_Coverage"]').nth(2).check();
+  await this.page.locator('input[name="Application.Dependent[3].Have_Previous_Coverage"]').nth(2).check();;
+  await this.page.locator('input[name="Application.Dependent[4].Have_Previous_Coverage"]').nth(2).click();
+ // await this.page.getByLabel('No').nth(3).check();
+  //await this.page.getByLabel('No').nth(4).check();
+  //await this.page.getByLabel('No').nth(5).check();
+  //await this.page.getByLabel('No').nth(6).check();
+ //await this.page.locator('[id="FEL443E7861B61772D48A61\\[0\\]"] > .radioFields > div > .radio-choice-label').click();
+  //await this.page.locator('[id="FEL443E7861B61772D48A61\\[1\\]"] > .radioFields > div > .radio-choice-label').click();
+  //await this.page.locator('[id="FEL443E7861B61772D48A61\\[2\\]"] > .radioFields > div > .radio-choice-label').click();
+  //await this.page.locator('[id="FEL443E7861B61772D48A61\\[3\\]"] > .radioFields > div > .radio-choice-label').click();
+ // await this.page.locator('[id="FEL443E7861B61772D48A61\\[4\\]"] > .radioFields > div > .radio-choice-label').click(); 
+
+  //await this.page.locator('input[name="Application.Dependent[0].Have_Previous_Coverage"]').nth(2).check();
+  //await this.page.locator('input[name="Application.Dependent[1].Have_Previous_Coverage"]').nth(2).check();
+ // await this.page.locator('input[name="Application.Dependent[2].Have_Previous_Coverage"]').nth(2).check();
+ // await this.page.locator('input[name="Application.Dependent[3].Have_Previous_Coverage"]').nth(2).check();;
+ // await this.page.locator('input[name="Application.Dependent[4].Have_Previous_Coverage"]').nth(2).click();
+ await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
 async uploadFile() {
