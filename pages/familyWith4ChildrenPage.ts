@@ -338,29 +338,12 @@ async familyMembers(){
 
 async planInformation(){
 
-  //await this.page.locator('input[name="Application.Have_Previous_Coverage"]').nth(2).click();
-  await this.page.getByLabel('No').first().check();
-  await this.page.getByLabel('No').nth(2).check();
-  await this.page.getByRole('group', { name: 'First Child Last name child' }).getByLabel('No').first().click();
-  await this.page.getByRole('group', { name: 'lime calculating' }).getByLabel('No').first().click();
-  await this.page.locator('input[name="Application.Dependent[2].Have_Previous_Coverage"]').nth(2).check();
-  await this.page.locator('input[name="Application.Dependent[3].Have_Previous_Coverage"]').nth(2).check();;
-  await this.page.locator('input[name="Application.Dependent[4].Have_Previous_Coverage"]').nth(2).click();
-  //await this.page.getByLabel('No').nth(3).check();
-  //await this.page.getByLabel('No').nth(4).check();
-  //await this.page.getByLabel('No').nth(5).check();
-  //await this.page.getByLabel('No').nth(6).check();
- //await this.page.locator('[id="FEL443E7861B61772D48A61\\[0\\]"] > .radioFields > div > .radio-choice-label').click();
-  //await this.page.locator('[id="FEL443E7861B61772D48A61\\[1\\]"] > .radioFields > div > .radio-choice-label').click();
-  //await this.page.locator('[id="FEL443E7861B61772D48A61\\[2\\]"] > .radioFields > div > .radio-choice-label').click();
-  //await this.page.locator('[id="FEL443E7861B61772D48A61\\[3\\]"] > .radioFields > div > .radio-choice-label').click();
- // await this.page.locator('[id="FEL443E7861B61772D48A61\\[4\\]"] > .radioFields > div > .radio-choice-label').click(); 
-
-  //await this.page.locator('input[name="Application.Dependent[0].Have_Previous_Coverage"]').nth(2).check();
-  //await this.page.locator('input[name="Application.Dependent[1].Have_Previous_Coverage"]').nth(2).check();
- // await this.page.locator('input[name="Application.Dependent[2].Have_Previous_Coverage"]').nth(2).check();
- // await this.page.locator('input[name="Application.Dependent[3].Have_Previous_Coverage"]').nth(2).check();;
- // await this.page.locator('input[name="Application.Dependent[4].Have_Previous_Coverage"]').nth(2).click();
+  await this.page.locator('#RADIO71FE75CC4G4GB17D54CA[value="No"]').click();
+  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8[0][value="No"]').click();;
+  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8[1][value="No"]').click();
+  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8[2][value="No"]').click();
+  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8[3][value="No"]').click();
+ await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8[4][value="No"]').click();
  await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
