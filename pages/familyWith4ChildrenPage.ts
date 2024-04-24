@@ -162,11 +162,8 @@ export class Familywith4childrenPage {
     await this.page.locator('#lastName57').fill('Last name child1');
     await this.page.locator('#birthDate58').click();
     await this.page.locator('#birthDate58').fill('01/01/2010');
-    await this.page.locator('memberRelationship59').click();
     await this.page.locator('memberRelationship59').selectOption('CHILD');
-    await this.page.locator('#gender60').click();
     await this.page.locator('#gender60').selectOption('MALE');
-    await this.page.locator('#isSmoker61').click();
     await this.page.locator('#isSmoker61').selectOption('NO');
 
  }
