@@ -346,7 +346,7 @@ async planInformation(){
   await this.page.locator('input[name="Application.Dependent[2].Have_Previous_Coverage"]').nth(2).check();
   await this.page.locator('input[name="Application.Dependent[3].Have_Previous_Coverage"]').nth(2).check();;
   await this.page.locator('input[name="Application.Dependent[4].Have_Previous_Coverage"]').nth(2).click();
- // await this.page.getByLabel('No').nth(3).check();
+  //await this.page.getByLabel('No').nth(3).check();
   //await this.page.getByLabel('No').nth(4).check();
   //await this.page.getByLabel('No').nth(5).check();
   //await this.page.getByLabel('No').nth(6).check();
