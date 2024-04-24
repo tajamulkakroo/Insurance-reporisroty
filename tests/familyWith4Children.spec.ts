@@ -6,7 +6,7 @@ const fakeValue = {
   ...fakehealthPartners(),
 };
 
-test.setTimeout(300000);
+test.setTimeout(350000);
 test('Family with 4 children test', async ({ page }) => {
   const  familyPage = new Familywith4childrenPage(page);
     await familyPage.navigateToWelcomePage();

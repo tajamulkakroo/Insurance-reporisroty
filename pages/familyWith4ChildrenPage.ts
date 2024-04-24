@@ -339,12 +339,12 @@ async familyMembers(){
 async planInformation(){
 
   await this.page.locator('#RADIO71FE75CC4G4GB17D54CA[value="No"]').click();
-  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8[0][value="No"]').click();;
-  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8[1][value="No"]').click();
-  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8[2][value="No"]').click();
-  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8[3][value="No"]').click();
- await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8[4][value="No"]').click();
- await this.page.getByRole('link', { name: 'Continue ' }).click();
+  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8\\[0\\][value="No"]').click();
+  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8\\[1\\][value="No"]').click();
+  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8\\[2\\][value="No"]').click();
+  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8\\[3\\][value="No"]').click();
+  await this.page.locator('#RADIOF443E6BGD2EDC5D3D3A8\\[4\\][value="No"]').click();
+  await this.page.getByRole('link', { name: 'Continue ' }).click();
 }
 
 async uploadFile() {

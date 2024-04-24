@@ -265,14 +265,14 @@ async verifySubmission() {
 async  submitForm(lastName: string){
   await this.page.locator('#CHECKBOX1FE4964A4AE79DA3DAF6').check;
   await this.page.locator('#CHECKBOX81B9EA3022BEAD60G1A4').check;
-  /*await this.applicantFirstNameLocator.click();
-  await this.applicantFirstNameLocator.fill(firstName);
-  await this.applicantLastNameLocator.click();
+  await this.applicantFirstNameLocator.locator('input[name="Application.Signature.First_Name"]').click();
+  await this.applicantFirstNameLocator.fill('TESTAUTO');
+  await this.applicantLastNameLocator.locator('input[name="Application.Signature.Last_Name"]').click();
   await this.applicantLastNameLocator.fill(lastName);
   await this.confirmFirstNameLocator.click();
-  await this.confirmFirstNameLocator.fill(firstName);
+  await this.confirmFirstNameLocator.fill('TESTAUTO');
   await this.confirmLastNameLocator.click();
-  await this.confirmLastNameLocator.fill(lastName); */   
+  await this.confirmLastNameLocator.fill(lastName); 
   //Please add inique IDs for these 4 elements
 }
 
