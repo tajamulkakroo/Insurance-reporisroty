@@ -10,12 +10,12 @@ test.setTimeout(180000);
 test('Family with 4 children test', async ({ page }) => {
   const  familyPage = new Familywith4childrenPage(page);
     await familyPage.navigateToWelcomePage();
-    await expect(page).toHaveURL('https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#welcome');
+    await expect(page).toHaveURL('https://individualinsurance-stg.healthpartners.com/hp/shopping/anonymous.html#welcome');
     await familyPage.clickGetStartedLink();
     await familyPage.SeeIfYouQualify();
     await familyPage.saveAndContinue();
     await familyPage.fillZipCode('55413');
-    await expect(page).toHaveURL("https://individualinsurance.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics");
+    await expect(page).toHaveURL("https://individualinsurance-stg.healthpartners.com/hp/shopping/anonymous.html#view/account/WhosCoveredSE/Demographics");
     await familyPage.fillFirstName();
     await familyPage.fillLastName(fakeValue.lastNameLocator);
     await familyPage.fillBirthDate('02/16/1987');

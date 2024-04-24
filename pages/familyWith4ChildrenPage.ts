@@ -162,13 +162,10 @@ export class Familywith4childrenPage {
     await this.page.locator('#lastName57').fill('Last name child1');
     await this.page.locator('#birthDate58').click();
     await this.page.locator('#birthDate58').fill('01/01/2010');
-    await this.page.locator('memberRelationship59').click();
-    await this.page.locator('memberRelationship59').selectOption('CHILD');
+    await this.page.locator('#memberRelationship59').click();
+    await this.page.locator('#memberRelationship59').selectOption('CHILD');
     await this.page.locator('#gender60').click();
-    await this.page.locator('#gender60').selectOption('MALE');
-    await this.page.locator('#isSmoker61').click();
-    await this.page.locator('#isSmoker61').selectOption('NO');
-
+    await this.page.locator('#gender60').selectOption("M");
  }
 
  async clickAddDependentLink2() {
@@ -183,9 +180,8 @@ export class Familywith4childrenPage {
     await this.page.locator('#memberRelationship83').click();
     await this.page.locator('#memberRelationship83').selectOption('CHILD');
     await this.page.locator('#gender84').click();
-    await this.page.locator('#gender84').selectOption('M');
-    //await this.page.locator('#isSmoker85').click();
-    //await this.page.locator('#isSmoker85').selectOption('NO');
+    await this.page.locator('#gender84').selectOption("M");
+  
 
  }
 
@@ -201,9 +197,8 @@ export class Familywith4childrenPage {
     await this.page.locator('#memberRelationship113').click();
     await this.page.locator('#memberRelationship113').selectOption('CHILD');
     await this.page.locator('#gender114').click();
-    await this.page.locator('#gender114').selectOption('F');
-    //await this.page.locator('#isSmoker115').click();
-    //await this.page.locator('#isSmoker115').selectOption('NO');
+    await this.page.locator('#gender114').selectOption("F");
+  
 
  }
 
@@ -219,9 +214,8 @@ export class Familywith4childrenPage {
     await this.page.locator('#memberRelationship149').click();
     await this.page.locator('#memberRelationship149').selectOption('CHILD');
     await this.page.locator('#gender150').click();
-    await this.page.locator('#gender150').selectOption('M');
-    //await this.page.locator('#isSmoker151').click();
-    //await this.page.locator('#isSmoker151').selectOption('NO');
+    await this.page.locator('#gender150').selectOption("M");
+   
 
  }
 
